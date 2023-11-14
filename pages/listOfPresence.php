@@ -149,7 +149,7 @@ $req->execute();
                                         
                                     </thead>
                                     <tbody>
-                                        <?php if (count($reqNumberodpresence->fetchAll()) > 0) {
+                                        <?php if ($NUMBEROFPRESENTCHORISTE > 0) {
                                             while ($choriste = $req->fetch(PDO::FETCH_OBJ)) { ?>
                                                 <tr>
                                                     <td><?= $choriste->presesenceId ?></td>

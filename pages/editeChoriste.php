@@ -92,8 +92,8 @@ if (isset($_POST['editeChoristeForm'])) {
     <!--Main section start-->
 
     <main class="">
-        <div class="container pt-2 mt-5">
-            <div class="row">
+        <div class="container ">
+            <div class="row pt-5 mt-5 ">
                 <div class="col-lg-6">
                     <h5 class="text-uppercase text-primary">Add choriste /</h5>
                 </div>

@@ -1,5 +1,8 @@
 <?php
-//DEVELOP BY SIDOF DOUNTIO.
+/*
+    Author: SIDOF DOUNTIO.
+    Email: sidofdountio406@gmail.com
+**/
 require 'db/connection.php';
 require 'config/utils.php';
 require 'model/choriste.php';
@@ -70,7 +73,7 @@ is_logged();
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="me-auto  bd-highlight">
-                                    <h4 class="mb-1 fw-bold"><?= $NUMBEROFMALE;?></h4>
+                                    <h4 class="mb-1 fw-bold"><?= $NUMBEROFMALE; ?></h4>
                                     <div class="mb-1">Male choriste</div>
                                 </div>
                                 <div class="pt-5">
@@ -90,7 +93,7 @@ is_logged();
                         <div class="card-body">
                             <div class="d-flex">
                                 <div class="me-auto  bd-highlight">
-                                    <h4 class="mb-1 fw-bold"><?=$NUMBEROFFEMALE?> </h4>
+                                    <h4 class="mb-1 fw-bold"><?= $NUMBEROFFEMALE ?> </h4>
                                     <div class="mb-1 p-1">Female choriste</div>
                                 </div>
                                 <div class="pt-5">
@@ -105,11 +108,12 @@ is_logged();
                     </div>
                 </div>
             </div>
+            <!-- Marck each presence -->
             <div class="row mb-1">
 
                 <div class="col-lg-12">
                     <!-- style="min-height: 485px" -->
-                    <h3 class="fw-bold text-">Select present choriste</h3>
+                    <h3 class="">Mark each presence</h3>
                     <div class="card">
                         <div class="card-head" id="message">
 
@@ -123,7 +127,7 @@ is_logged();
                 </div>
 
             </div>
-
+            <!-- Chartjs  -->
             <div class="row mb-1">
                 <!-- FIRST CHART START-->
                 <?php   ?>
@@ -132,7 +136,7 @@ is_logged();
                         <div class="card-header border-0">
                             <div class="d-flex justify-content-between">
                                 <h3 class="card-title">presence monitoring</h3>
-                                <a class="nav-link" href="#">more</a>
+                                <a class="nav-link" href="#"><i class="bi bi-three-dots"></i></a>
                             </div>
                         </div>
 
@@ -150,7 +154,7 @@ is_logged();
     </main>
     <!--Main section end-->
 
-    <!-- MODAL FORM  -->
+    <!-- MODAL CONFIRM THE PRESENECE  -->
     <div class="modal fade" id="mackPresent" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -182,43 +186,43 @@ is_logged();
     <script>
         $(document).ready(function() {
             getChoriste();
-           var btnClose= $('.btn-close');
-           btnClose.css("background-color","red");
+            var btnClose = $('.btn-close');
+            // btnClose.css("background-color", "red");
 
-           presenceProgresse();
+            presenceProgresse();
         });
 
         function getChoriste() {
-            var displaydata = "true";
+            var displayData = true;
             $.ajax({
                 type: "POST",
                 url: 'pages/displayChoriste.php',
                 data: {
-                    displaySend: displaydata
+                    displaySend: displayData
                 },
                 success: function(data, status) {
                     $('#displayChoriste').html(data);
+                    console.log("Fetching choriste ...")
                 }
             });
         }
 
-        // function to confirm presence
+        // function to confirm presence that return an schoriste objet by id.
         function confirmePresence(choristeId) {
-
-            // GET THE CHORISTE ID.
+            // Get the choriste id and set display it on the modal.
             $('#choristeId').val(choristeId);
-            
             $.post("pages/confirm.php", {
                     choristeId: choristeId
                 },
                 function(data, status) {
                     var choriste = JSON.parse(data);
+                    console.log(choriste);
                     $('#name').val(choriste.lastName);
                 });
             $('#mackPresent').modal("show");
         }
 
-        // function to mark presence of choriste
+        /* Function to mark presence of choriste by specific id get from modal.**/
         function markPresent() {
             var choristeId = $('#choristeId').val();
             var choristeName = $('#name').val();
@@ -234,103 +238,96 @@ is_logged();
                 success: function(response) {
 
                     if (response.status == 1) {
-                        $('#message').html('<p  class="text-center">' + response.message + '</p>');
+                        $('#message').html('<p  class="text-center">' + response.message + '</p>').fadeOut(2000);
                         $('#mackPresent').modal("hide");
                     } else {
-                        $('#message').html('<p  class="text-center alert alert-danger">' + response.message + '</p>');
+                        $('#message').html('<p  class="text-center alert alert-danger">' + response.message + '</p>').fadeOut(2000);
                         $('#mackPresent').modal("hide");
                     }
                 }
             })
         }
 
-        function presenceProgresse(){
+        function presenceProgresse() {
             $(function() {
-            'use strict'
-
-            var ticksStyle = {
-                fontColor: '#495057',
-                fontStyle: 'bold'
-            }
-
-            var mode = 'index';
-            var intersect = true;
-
-            const name = <?php echo json_encode($CHORISTEPRESENT)?>;
-            const number = <?php echo json_encode($NUMBER)?>;
-            console.log(number);  
-            var $salesChart = $('#more-presence')
-            // eslint-disable-next-line no-unused-vars
-            var salesChart = new Chart($salesChart, {
-                type: 'bar',
-                data: {
-                    labels: name,
-                    datasets: [{
-                            backgroundColor: '#007bff',
-                            borderColor: '#007bff',
-                            data: number
-                        }
-                        // ,
-                        // {
-                        //     backgroundColor: '#ced4da',
-                        //     borderColor: '#ced4da',
-                        //     data: [7, 17, 27, 20, 18, 15, 20]
-                        // }
-                    ]
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    tooltips: {
-                        mode: mode,
-                        intersect: intersect
-                    },
-                    hover: {
-                        mode: mode,
-                        intersect: intersect
-                    },
-                    legend: {
-                        display: false
-                    },
-                    title: {
-                        display: true,
-                        text: "Presence progresse"
-
-                    },
-                    scales: {
-                        yAxes: [{
-                            // display: false,
-                            gridLines: {
-                                display: true,
-                                lineWidth: '4px',
-                                color: 'rgba(0, 0, 0, .1)',
-                                zeroLineColor: 'transparent'
-                            },
-                            ticks: $.extend({
-                                beginAtZero: true,
-
-                                // Include a dollar sign in the ticks
-                                callback: function(value) {
-                                    if (value >= 1000) {
-                                        value /= 1000
-                                        value += 'k'
-                                    }
-
-                                    return '$' + value
-                                }
-                            }, ticksStyle)
-                        }],
-                        xAxes: [{
-                            display: true,
-                            gridLines: {
-                                display: false
-                            },
-                            ticks: ticksStyle
-                        }]
-                    }
+                'use strict'
+                var ticksStyle = {
+                    fontColor: '#495057',
+                    fontStyle: 'bold'
                 }
-            })
+                var mode = 'index';
+                var intersect = true;
+                const name = <?php echo json_encode($CHORISTEPRESENT) ?>;
+                const number = <?php echo json_encode($NUMBER) ?>;
+                console.log(number);
+                var $salesChart = $('#more-presence')
+                // eslint-disable-next-line no-unused-vars
+                var salesChart = new Chart($salesChart, {
+                    type: 'bar',
+                    data: {
+                        labels: name,
+                        datasets: [{
+                                backgroundColor: '#007bff',
+                                borderColor: '#007bff',
+                                data: number
+                            },
+                            {
+                                backgroundColor: '#ced4da',
+                                borderColor: '#ced4da',
+                                data: [7, 17, 27, 20, 18, 15, 20]
+                            }
+                        ]
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        tooltips: {
+                            mode: mode,
+                            intersect: intersect
+                        },
+                        hover: {
+                            mode: mode,
+                            intersect: intersect
+                        },
+                        legend: {
+                            display: false
+                        },
+                        title: {
+                            display: true,
+                            text: "Presence progresse"
+                        },
+                        scales: {
+                            yAxes: [{
+                                // display: false,
+                                gridLines: {
+                                    display: true,
+                                    lineWidth: '4px',
+                                    color: 'rgba(0, 0, 0, .1)',
+                                    zeroLineColor: 'transparent'
+                                },
+                                ticks: $.extend({
+                                    beginAtZero: true,
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value) {
+                                        if (value >= 1000) {
+                                            value /= 1000
+                                            value += 'k'
+                                        }
+                                        return '$' + value
+                                    }
+                                }, ticksStyle)
+                            }],
+                            xAxes: [{
+                                display: true,
+                                gridLines: {
+                                    display: false
+                                },
+                                ticks: ticksStyle
+                            }]
+                        }
+                    }
+                })
 
-        })
+            })
 
         }
     </script>

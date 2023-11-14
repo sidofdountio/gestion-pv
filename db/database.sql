@@ -2,6 +2,8 @@
 DROP DATABASE IF EXISTS presenceManagement;
 create database presenceManagement CHARACTER SET 'utf8';
 
+-- mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'Password1/';
+
 -- CREATE USER 'manageUser'@'localhost' IDENTIFIED BY 'managerUser1/';
 
 
@@ -9,6 +11,7 @@ GRANT ALL PRIVILEGES ON presenceManagement .* TO 'manageUser'@'localhost';
 FLUSH PRIVILEGES;
 
 USE presenceManagement;
+
 CREATE TABLE users(
     usersId int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     email VARCHAR(50) UNIQUE,

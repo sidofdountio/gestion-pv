@@ -3,6 +3,9 @@
 require '../db/connection.php';
 
 if (isset($_POST['displaySend'])) {
+    $tables = array(
+        
+    );
 
     $table = '<table class="table"  style="width: 100%">
 <thead class="bg-dark text-white">

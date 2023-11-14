@@ -9,7 +9,9 @@ $data = array(
 );
 
 if (isset($_POST['choristeIdIsPresent'])) {
+    // format date
     $DATEFORMAT = date('Y-m-d');
+    // Get current date
     $CURRENTDATE = date($DATEFORMAT);
     
     $choristeId = $_POST['choristeIdIsPresent'];
@@ -39,7 +41,6 @@ if (isset($_POST['choristeIdIsPresent'])) {
 
         } catch (PDOException $ex) {
             $data['message'] = $ex->getMessage();
-            
         }
         
     } else {
