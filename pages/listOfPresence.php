@@ -35,22 +35,17 @@ $req->execute();
 <!-- HEADER END -->
 
 <body>
-
     <!--Navbar section start-->
     <?php include("../partials/navbar.php") ?>
-
     <!--Navbar-section end-->
     <!--Sidebar section start-->
-
     <?php include('../partials/sidebar.php') ?>
-
     <!--sidebar section end-->
     <!--Main section start-->
-
     <main class="pt-5 mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-6 mb-3">
                     <h5 class="text-uppercase text-primary">List of presence /</h5>
                 </div>
                 <div class="col-lg-6">
@@ -78,7 +73,6 @@ $req->execute();
                 </div>
 
                 <div class="col-lg-4 col-md-3 mb-2">
-
                     <div class="card text-white bg-success">
                         <div class="card-body">
                             <div class="d-flex">
@@ -192,9 +186,6 @@ $req->execute();
         //     $('#listOfPresence').DataTable();
 
         // });
-
-
-
         function printTable() {
 
             html2canvas($('#listOfPresence')[0], {
@@ -209,7 +200,6 @@ $req->execute();
                     pdfMake.createPdf(docDefinition).download("list-of-presence.pdf");
                 }
             });
-
         }
     </script>
     <!-- Food start -->
