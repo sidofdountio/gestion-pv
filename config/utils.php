@@ -51,7 +51,7 @@ function is_logged():bool{
         return true;
     }
     else{
-        header('Location: http://localhost/presence-management/pages/login.php') ;
+        header('Location: http://localhost/gestion-pv/pages/auth/login.php') ;
     }
   
     return false;

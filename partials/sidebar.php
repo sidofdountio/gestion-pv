@@ -1,18 +1,18 @@
-<div class="offcanvas offcanvas-start sidebar-nav bg-success" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start sidebar-nav " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 
     <div class="offcanvas-body">
-        <nav class="navbar-dark">
-            <ul class="navbar-nav">
+        <nav class="navbar ">
+            <ul class="navbar-nav text-dark">
                 <li>
-                    <a href="http://localhost/presence-management" class="nav-link px-3 active ">
+                    <a href="http://localhost/gestion-pv" class="nav-link px-3 active text-dark ">
                         <span class="me-2"><i class="bi bi-grid-fill"></i></span>
-                        <span>Home</span>
+                        <span>Dashboard</span>
                     </a>
                 </li>
                 <!-- user -->
                 <li>
-                    <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        <span class="me-2"><i class="bi bi-person-fill"></i></span> <span>Choriste</span>
+                    <a class="nav-link px-3 sidebar-link text-dark" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <span class="me-2"><i class="bi bi-person-fill"></i></span> <span>Students</span>
                         <span class="right-icon ms-auto">
                             <i class="bi bi-chevron-down"></i>
                         </span>
@@ -22,38 +22,27 @@
                             <ul class="navbar-nav ps-3">
                                 <!-- MANAGE CHORISTE START -->
                                 <li>
-                                    <a href="http://localhost/presence-management/pages/addChoriste.php" class="nav-link px-3 mb-2">
+                                    <a href="http://localhost/gestion-pv/pages/student/add-student.php" class="nav-link px-3 mb-2 text-dark">
                                         <span class="me-2">
                                             <i class="bi bi-person-plus-fill"></i>
                                         </span>
-                                        <span>Add a choriste</span>
+                                        <span>Add New Choriste</span>
                                     </a>
                                 </li>
                                 <!-- user list -->
                                 <li>
-                                    <a href="http://localhost/presence-management/pages/listOfChoriste.php" class="nav-link px-3 mb-2">
+                                    <a href="http://localhost/gestion-pv/pages/student/student-list.php" class="nav-link px-3 mb-2 text-dark">
                                         <span class="me-2">
                                             <i class="bi bi-people-fill"></i>
                                         </span>
-                                        <span>Manage choriste</span>
+                                        <span>List student</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </li>
-                <!-- MANAGE CHORISTE END -->
-
-
-                <!-- LIST OF PRESENCE -->
-                <li>
-                    <a href="http://localhost/presence-management/pages/listOfPresence.php" class="nav-link px-3  me-2">
-                        <span class="me-2">
-                            <i class="bi bi-star-fill"></i>
-                        </span><span>List of presence</span>
-                    </a>
-
-                </li>
+                
 
                 <!--  -->
                 <li>

@@ -1,7 +1,7 @@
 
 
-<nav class="navbar navbar-expand-lg  fixed-top shadow-none p-3 mb-5 bg-light rounded">
-    <div class="container-fluid ">
+<nav class="navbar navbar-expand-lg  fixed-top navbar-dark bg-dark">
+    <div class="container ">
         <!-- offcanvas trigger -->
         <button class="navbar-toggler me-2 " type="button"
                 data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon" id="toggler" data-bs-target="#offcanvasExample"></span>
         </button>
         <!-- offcanvas trigger -->
-        <a class="navbar-brand fw-bold text-uppercase me-auto" href="#">Chorale name</a>
+        <a class="navbar-brand fw-bold text-uppercase me-auto" href="#">Gestion PV</a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon" id="toggler"></span>
